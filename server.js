@@ -7,8 +7,17 @@ var PORT = process.env.PORT || 3000,
 app.use(express.static(__dirname + '/public'));
 
 
-io.on('connection', function(){
+io.on('connection', function(socket){
     console.log('CONNECTED BRO');
+    
+    socket.on('message', function(message){
+       console.log('RECEIVED HAHA '+ message.text); 
+       socket.broadcast.emit('message', message);
+    });
+    
+    socket.emit('message', {
+       text:'Welcome to the Chat app' 
+    });
 });
 
 http.listen(PORT, function(){
