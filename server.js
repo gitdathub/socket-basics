@@ -11,7 +11,7 @@ io.on('connection', function(socket){
     console.log('CONNECTED BRO');
     
     socket.on('message', function(message){
-       console.log('RECEIVED HAHA '+ message.text); 
+       console.log('RECEIVED HAHA' + message.text); 
        socket.broadcast.emit('message', message);
     });
     
@@ -21,5 +21,5 @@ io.on('connection', function(socket){
 });
 
 http.listen(PORT, function(){
-    console.log('server started');
+    console.log('server started');``
 })
