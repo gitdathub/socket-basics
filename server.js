@@ -12,14 +12,15 @@ io.on('connection', function(socket){
     
     socket.on('message', function(message){
        console.log('RECEIVED HAHA' + message.text); 
-       io.emit('message', message);
+       io.emit('message', message);//io.emit broadcast to everyone including user, socket.broadcast sends
+          //to everyone except the user
     });
     
-    socket.emit('message', {
-       text:'Welcome to the Chat app' 
+    socket.emit('message', { //socket.on receives stuff and does something while socket.emit sends stuff
+       text:'Welcome to the Chat app'  // and does something
     });
 });
 
 http.listen(PORT, function(){
-    console.log('server started');``
-})
+    console.log('server started');
+});
