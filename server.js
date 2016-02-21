@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 3000,
 
 app.use(express.static(__dirname + '/public'));
 
-var currentDate = now.format('h:mma');
+var currentDate = now.local().format('h:mma');
 
 io.on('connection', function(socket){
     console.log('CONNECTED BRO');
