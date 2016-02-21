@@ -1,4 +1,8 @@
 var socket = io();
+     
+
+  
+
 
 
 socket.on('connect', function(){
@@ -9,9 +13,9 @@ socket.on('message', function(message){
    console.log('New Message FROM THE GODSSSS');
    console.log(message.text);
     
-   $('.messages').append('<p><strong>' + message.date + '</strong> ' + message.text + '</p>');    
-  
-});
+    
+   $('.messages').append('<p><strong>' + message.date + '</strong> ' + message.text + '</p>');
+ 
 
 //Handles incoming messages
 var $form = jQuery('#msg-form');
