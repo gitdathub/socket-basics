@@ -9,7 +9,8 @@ socket.on('message', function(message){
    console.log('New Message FROM THE GODSSSS');
    console.log(message.text);
     
-   $('.messages').append('<p>' + message.text + '</p>');
+   $('.messages').append('<p><strong>' + message.date + '</strong> ' + message.text + '</p>');    
+  
 });
 
 //Handles incoming messages

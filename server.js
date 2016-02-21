@@ -2,10 +2,13 @@ var PORT = process.env.PORT || 3000,
     express = require('express'),
     app = express(),
     http = require('http').Server(app),
-    io = require('socket.io')(http);
+    io = require('socket.io')(http),
+    moment = require('moment'),
+    now = moment();
 
 app.use(express.static(__dirname + '/public'));
 
+var currentDate = now.format('h:mma');
 
 io.on('connection', function(socket){
     console.log('CONNECTED BRO');
@@ -17,6 +20,7 @@ io.on('connection', function(socket){
     });
     
     socket.emit('message', { //socket.on receives stuff and does something while socket.emit sends stuff
+       date: currentDate,
        text:'Welcome to the Chat app'  // and does something
     });
 });
