@@ -8,15 +8,16 @@ var PORT = process.env.PORT || 3000,
 
 app.use(express.static(__dirname + '/public'));
 
-var currentDate = now.local().format('h:mma');
+var currentDate = now.format('h:mma');
 
 io.on('connection', function(socket){
     console.log('CONNECTED BRO');
     
     socket.on('message', function(message){
        console.log('RECEIVED HAHA' + message.text); 
-       io.emit('message', message);//io.emit broadcast to everyone including user, socket.broadcast sends
-          //to everyone except the user
+       io.emit('text_update', message);//io.emit broadcast to everyone including user, socket.broadcast sends
+          //to everyone except the user. I think there is no formatting here, sends 
+          //whole 'message' object back to the front end with the sync identifier "message"
     });
     
     socket.emit('message', { //socket.on receives stuff and does something while socket.emit sends stuff
